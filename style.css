@@ -278,3 +278,21 @@ background:#ff4d94;
 color:white;
 
 }
+.profile-card{
+    width:450px;
+    margin:120px auto;
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.profile-card h1{
+    color:#ff2f92;
+}
+
+.profile-card p{
+    margin:15px 0;
+    font-size:18px;
+}
