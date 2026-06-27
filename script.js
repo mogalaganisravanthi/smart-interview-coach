@@ -1,5 +1,7 @@
+
 function startInterview(){
 
-alert("Welcome to Smart Interview Coach!");
+window.location.href="dashboard.html";
 
 }
+
