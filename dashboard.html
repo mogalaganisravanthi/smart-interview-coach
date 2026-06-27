@@ -27,7 +27,7 @@
 
 <div class="dashboard">
 
-<h1>Welcome Sravanthi 👋</h1>
+ <h1 id="welcome"></h1>
 
 <p>Choose an interview category to begin.</p>
 
@@ -65,3 +65,11 @@ Start Interview
 
 </body>
 </html>
+<script>
+
+const username = localStorage.getItem("username");
+
+document.getElementById("welcome").innerHTML =
+"👋 Welcome, " + username;
+
+</script>

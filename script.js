@@ -1,7 +1,10 @@
 
 function startInterview(){
 
-window.location.href="dashboard.html";
+    const name = document.getElementById("username").value;
+
+    localStorage.setItem("username", name);
+
+    window.location.href = "dashboard.html";
 
 }
-
