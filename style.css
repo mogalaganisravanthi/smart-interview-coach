@@ -186,29 +186,21 @@ list-style:none;
 }
 
 .cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:25px;
-
-margin-top:40px;
-
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+    width:100%;
+    max-width:1300px;
+    margin:40px auto;
 }
 
 .card-box{
-
-background:white;
-
-padding:30px;
-
-border-radius:20px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.1);
-
-transition:.3s;
-
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0, 0, 0, 0.15);
+    width:100%;
 }
 
 .card-box:hover{
