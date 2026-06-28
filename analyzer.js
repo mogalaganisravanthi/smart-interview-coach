@@ -1,46 +1,69 @@
 
 document.getElementById("analyzeBtn").onclick = function () {
 
-    const answer = document
-        .getElementById("transcript")
-        .innerText
-        .toLowerCase();
+    const text = document.getElementById("transcript").innerText.toLowerCase();
 
-    const expected = interviewQuestions[currentQuestion].points;
+    let issues = [];
+    let score = 100;
+
+    // --------------------------
+    // 1. BASIC GRAMMAR CHECKS
+    // --------------------------
+
+    if (text.includes(" i am completed")) {
+        issues.push("❌ Incorrect grammar: use 'I have completed' instead of 'I am completed'");
+        score -= 10;
+    }
+
+    if (text.includes(" i is ")) {
+        issues.push("❌ Grammar mistake: 'I is' should be 'I am'");
+        score -= 10;
+    }
+
+    if (!text.includes("my name")) {
+        issues.push("⚠️ Missing self introduction (name not clearly stated)");
+        score -= 10;
+    }
+
+    // --------------------------
+    // 2. CONTENT CHECK
+    // --------------------------
+
+    const required = ["name", "education", "skills", "project", "career"];
 
     let covered = 0;
 
-    let report = "📊 AI Interview Analysis\n\n";
-
-    const keywordMap = {
-        "name": ["name", "i am", "my name", "called"],
-        "education": ["b.tech", "btech", "degree", "studied", "graduation", "college"],
-        "skills": ["python", "java", "c++", "html", "css", "javascript", "skills", "know"],
-        "project": ["project", "built", "developed", "application", "app"],
-        "career goal": ["goal", "become", "future", "aim", "aspire", "work as"],
-        "department": ["ai", "artificial intelligence", "ml", "machine learning", "cs", "cse", "it"]
-    };
-
-    expected.forEach(point => {
-
-        const key = point.toLowerCase();
-
-        let keywords = keywordMap[key] || [key];
-
-        let found = keywords.some(k => answer.includes(k));
-
-        if (found) {
-            report += "✅ " + point + "\n";
+    required.forEach(item => {
+        if (text.includes(item)) {
             covered++;
-        } else {
-            report += "❌ " + point + "\n";
         }
     });
 
-    const score =
-        Math.round((covered / expected.length) * 100);
+    let coverage = Math.round((covered / required.length) * 100);
 
-    report += "\n📈 Coverage Score: " + score + "%";
+    // --------------------------
+    // 3. CONFIDENCE SCORE
+    // --------------------------
 
-    alert(report);
+    let confidence = Math.max(0, score - (100 - coverage));
+
+    // --------------------------
+    // 4. OUTPUT
+    // --------------------------
+
+    let output = "📊 AI INTERVIEW REPORT\n\n";
+
+    output += "🎯 Content Coverage: " + coverage + "%\n";
+    output += "💡 Confidence Score: " + confidence + "%\n\n";
+
+    if (issues.length === 0) {
+        output += "✅ No major grammar issues found\n";
+    } else {
+        output += "⚠️ Issues:\n";
+        issues.forEach(i => output += i + "\n");
+    }
+
+    document.getElementById("result").innerText = output;
+
+    alert(output);
 };
