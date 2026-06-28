@@ -1,5 +1,4 @@
 
-}
 document.getElementById("analyzeBtn").onclick = function () {
 
     const answer = document
