@@ -93,3 +93,32 @@ recognition.onerror = (event) => {
     alert("Microphone Error: " + event.error);
 
 };
+function initSpeech(callback) {
+    const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    let finalText = "";
+
+    recognition.onresult = (event) => {
+        let interim = "";
+
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+            let transcript = event.results[i][0].transcript;
+
+            if (event.results[i].isFinal) {
+                finalText += transcript + " ";
+            } else {
+                interim += transcript;
+            }
+        }
+
+        callback(finalText + interim);
+    };
+
+    recognition.start();
+}
