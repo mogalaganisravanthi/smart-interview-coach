@@ -13,7 +13,7 @@ function analyzeAnswer() {
         return;
     }
 
-    const expected = interviewQuestions[currentQuestion].points;
+    const expected = selectedQuestions[currentQuestion].points;
 
     let covered = 0;
 
