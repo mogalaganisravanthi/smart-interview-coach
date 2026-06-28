@@ -296,3 +296,79 @@ color:white;
     margin:15px 0;
     font-size:18px;
 }
+/* Interview Page */
+
+.interview-page{
+
+    width:90%;
+    margin:100px auto;
+}
+
+.title{
+
+    text-align:center;
+    color:#ff2f92;
+    margin-bottom:20px;
+}
+
+#question{
+
+    text-align:center;
+    font-size:30px;
+    margin-bottom:40px;
+}
+
+.interview-layout{
+
+    display:flex;
+    gap:40px;
+}
+
+.left-panel{
+
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.right-panel{
+
+    flex:2;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.left-panel ul{
+
+    margin-top:20px;
+    padding-left:20px;
+}
+
+.left-panel li{
+
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+#transcript{
+
+    margin-top:20px;
+    min-height:180px;
+    border:2px solid #ffd6ec;
+    padding:20px;
+    border-radius:15px;
+    background:#fff8fc;
+    overflow-y:auto;
+}
+
+#startBtn,
+#stopBtn,
+#analyzeBtn{
+
+    margin-top:15px;
+    width:100%;
+}
