@@ -1,5 +1,9 @@
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (!window.SpeechRecognition) {
+    alert("Speech Recognition not supported in this browser. Use Chrome.");
+}
 
 const recognition = new SpeechRecognition();
 
@@ -10,15 +14,15 @@ const transcriptBox = document.getElementById("transcript");
 
 let finalText = "";
 
-document.getElementById("startBtn").onclick = function () {
+document.getElementById("startBtn").onclick = () => {
     recognition.start();
 };
 
-document.getElementById("stopBtn").onclick = function () {
+document.getElementById("stopBtn").onclick = () => {
     recognition.stop();
 };
 
-recognition.onresult = function (event) {
+recognition.onresult = (event) => {
 
     let interim = "";
 
@@ -34,4 +38,9 @@ recognition.onresult = function (event) {
     }
 
     transcriptBox.innerText = finalText + " " + interim;
+};
+
+recognition.onerror = (e) => {
+    console.log("Speech error:", e.error);
+    alert("Mic error: " + e.error);
 };

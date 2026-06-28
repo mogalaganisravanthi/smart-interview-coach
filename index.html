@@ -1,50 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Interview Coach</title>
 
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="card">
-
-<h1>🌸 Smart Interview Coach</h1>
-
-<p class="subtitle">
-Practice technical and HR interviews with confidence.
-</p>
-<input type="text" id="username" placeholder="Enter Your Name">
-
-<input type="text" id="roll" placeholder="roll number">
-<select id="department">
-    <option value="">Select Department</option>
-    <option value="AIML">AIML</option>
-    <option value="CSE">CSE</option>
-    <option value="ECE">ECE</option>
-    <option value="EEE">EEE</option>
-    <option value="IT">IT</option>
-</select>
-
-<button onclick="startInterview()">
-Start Your Journey →
-</button>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,12 +13,11 @@ Start Your Journey →
 <button id="stopBtn">Stop</button>
 <button id="analyzeBtn">Analyze</button>
 
-<h3>📝 Your Answer:</h3>
-<div id="transcript" style="border:1px solid black; padding:10px; min-height:100px;"></div>
+<div id="transcript" style="border:1px solid black; min-height:120px; padding:10px;"></div>
 
-<h3>📊 Results:</h3>
 <div id="result"></div>
 
+<!-- IMPORTANT: scripts at bottom -->
 <script src="speech.js"></script>
 <script src="analyzer.js"></script>
 
