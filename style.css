@@ -1,0 +1,333 @@
+/* ===============================
+   SMART INTERVIEW COACH
+   Version 2.0
+==================================*/
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffe6f2,#ffd6e8,#fff5fa);
+min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+width:100%;
+height:70px;
+background:#ff4d94;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 40px;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.navbar h2{
+color:white;
+}
+
+.navbar ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+/* LOGIN */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.card{
+background:white;
+width:450px;
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.card h1{
+color:#ff2f92;
+margin-bottom:15px;
+}
+
+.subtitle{
+margin-bottom:25px;
+color:#666;
+}
+
+input,
+select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:14px;
+margin-top:15px;
+border:none;
+border-radius:12px;
+background:#ff4d94;
+color:white;
+font-size:17px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#ff2f92;
+transform:translateY(-2px);
+}
+
+/* DASHBOARD */
+
+.dashboard{
+width:90%;
+margin:40px auto;
+}
+
+.dashboard h1{
+text-align:center;
+color:#ff2f92;
+margin-top:30px;
+}
+
+.dashboard p{
+text-align:center;
+margin-top:10px;
+color:#666;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card-box{
+background:white;
+padding:25px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+transition:.3s;
+}
+
+.card-box:hover{
+transform:translateY(-8px);
+}
+
+.card-box h2{
+color:#ff2f92;
+margin-bottom:15px;
+}
+
+.card-box p{
+margin-bottom:20px;
+}
+
+/* PROFILE */
+
+.profile-card{
+width:500px;
+margin:60px auto;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.profile-card h1{
+color:#ff2f92;
+margin-bottom:25px;
+text-align:center;
+}
+
+.profile-card p{
+font-size:18px;
+margin:15px 0;
+}
+
+/* INTERVIEW */
+
+.interview-page{
+width:90%;
+margin:40px auto;
+}
+
+.title{
+text-align:center;
+color:#ff2f92;
+margin-bottom:20px;
+}
+
+#question{
+text-align:center;
+font-size:28px;
+margin-bottom:30px;
+color:#ff2f92;
+}
+
+.interview-layout{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:30px;
+}
+
+.left-panel,
+.right-panel{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.left-panel h3,
+.right-panel h3{
+color:#ff2f92;
+margin-bottom:20px;
+}
+
+.left-panel ul{
+list-style:none;
+}
+
+.left-panel li{
+background:#ffe6f2;
+padding:12px;
+margin-bottom:12px;
+border-radius:10px;
+}
+
+#transcript{
+margin-top:20px;
+background:#fff8fc;
+border:2px solid #ffd6e8;
+border-radius:15px;
+min-height:220px;
+padding:20px;
+overflow:auto;
+line-height:1.6;
+}
+
+#startBtn,
+#stopBtn,
+#analyzeBtn{
+margin-top:15px;
+}
+#nextBtn{
+background:#7b2cbf;
+margin-top:15px;
+}
+
+#nextBtn:hover{
+background:#5a189a;
+}
+
+#analyzeBtn{
+background:#00b894;
+}
+
+#analyzeBtn:hover{
+background:#00997a;
+}
+
+#startBtn{
+background:#ff4d94;
+}
+
+#stopBtn{
+background:#ff7675;
+}
+
+.right-panel button{
+margin-bottom:12px;
+}
+
+#transcript{
+font-size:17px;
+line-height:1.8;
+}
+.report-card{
+
+margin-top:25px;
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(255,77,148,.25);
+
+border-left:8px solid #ff4d94;
+
+}
+
+.report-card h2{
+
+color:#ff2f92;
+
+margin-bottom:20px;
+
+}
+
+.report-card p{
+
+font-size:18px;
+
+margin:10px 0;
+
+}
+
+#suggestions{
+
+background:#fff5fa;
+
+padding:15px;
+
+border-radius:12px;
+
+margin-top:15px;
+
+line-height:1.7;
+
+}
+#grammar,
+#fillers{
+
+margin-top:15px;
+
+padding:15px;
+
+background:#fff5fa;
+
+border-radius:12px;
+
+line-height:1.8;
+
+font-size:17px;
+
+}

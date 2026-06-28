@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<h2>🌸 Smart Interview Coach</h2>
+
+<ul>
+
+<li><a href="dashboard.html">Home</a></li>
+
+<li><a href="profile.html">Profile</a></li>
+
+</ul>
+
+</nav>
+
+<div class="profile-card">
+
+<h1>👤 My Profile</h1>
+
+<p><strong>Name:</strong> <span id="name"></span></p>
+
+<p><strong>Roll Number:</strong> <span id="roll"></span></p>
+
+<p><strong>Department:</strong> <span id="department"></span></p>
+
+<br>
+
+<button onclick="location.href='dashboard.html'">
+
+⬅ Back to Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("name").innerHTML =
+localStorage.getItem("username");
+
+document.getElementById("roll").innerHTML =
+localStorage.getItem("roll");
+
+document.getElementById("department").innerHTML =
+localStorage.getItem("department");
+
+</script>
+
+</body>
+
+</html>

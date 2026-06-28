@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Mock Interview</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>🌸 Smart Interview Coach</h2>
+
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="profile.html">Profile</a></li>
+    </ul>
+</nav>
+
+<div class="interview-page">
+
+    <h1 class="title">🤖 AI Mock Interview</h1>
+
+<h2 id="timer" style="text-align:center;color:#ff2f92;font-size:26px;">
+⏳ 02:00
+</h2>
+
+<h2 id="question"></h2>
+
+    <div class="interview-layout">
+
+        <!-- LEFT PANEL -->
+
+        <div class="left-panel">
+
+            <h3>📌 Cover These Points</h3>
+
+            <ul id="points"></ul>
+
+        </div>
+
+        <!-- RIGHT PANEL -->
+
+        <div class="right-panel">
+
+            <button id="startBtn">🎤 Start Speaking</button>
+
+            <button id="stopBtn">🛑 Stop Speaking</button>
+
+            <h3>Your Answer</h3>
+
+            <div id="transcript">
+                Your answer will appear here...
+            </div>
+
+            <button id="analyzeBtn">🧠 Analyze Answer</button>
+
+            <div id="reportCard" class="report-card" style="display:none;">
+
+                <h2>🤖 AI Interview Report</h2>
+
+                <p><strong>Coverage:</strong> <span id="coverageScore"></span></p>
+
+                <p><strong>Communication:</strong> <span id="communicationScore"></span></p>
+
+                <p><strong>Overall Score:</strong> <span id="overallScore"></span></p>
+
+                <h3>💡 Suggestions</h3>
+
+                <div id="suggestions"></div>
+
+                <h3>📝 Grammar Feedback</h3>
+
+                <div id="grammar"></div>
+
+                <h3>🎤 Filler Words</h3>
+
+                <div id="fillers"></div>
+
+            </div>
+
+            <p id="countdown" style="font-size:22px;color:#ff2f92;font-weight:bold;text-align:center;margin-top:20px;"></p>
+
+            <button id="nextBtn">➡ Next Question</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="interviewData.js"></script>
+<script src="speech.js"></script>
+<script src="analyzer.js"></script>
+
+<script>
+    let timeLeft = 120;
+
+function startTimer(){
+
+    clearInterval(window.interviewTimer);
+
+    timeLeft = 120;
+
+    updateTimer();
+
+    window.interviewTimer = setInterval(function(){
+
+        timeLeft--;
+
+        updateTimer();
+
+        if(timeLeft <= 0){
+
+            clearInterval(window.interviewTimer);
+
+            alert("⏰ Time's up! Please analyze your answer.");
+
+        }
+
+    },1000);
+
+}
+
+function updateTimer(){
+
+    const min = String(Math.floor(timeLeft/60)).padStart(2,'0');
+    const sec = String(timeLeft%60).padStart(2,'0');
+
+    document.getElementById("timer").innerHTML =
+    "⏳ " + min + ":" + sec;
+
+}
+
+let currentQuestion = 0;
+
+function loadQuestion(){
+
+    const question = interviewQuestions[currentQuestion].question;
+
+    document.getElementById("question").innerHTML = question;
+
+    // 🤖 AI speaks the question
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(question);
+
+    speech.lang = "en-US";
+    speech.rate = 0.9;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+
+    const list = document.getElementById("points");
+
+    list.innerHTML = "";
+
+    interviewQuestions[currentQuestion].points.forEach(item=>{
+
+        const li = document.createElement("li");
+
+        li.innerHTML = "✅ " + item.title;
+
+        list.appendChild(li);
+
+    });
+
+    document.getElementById("transcript").innerHTML =
+    "Your answer will appear here...";
+
+    document.getElementById("reportCard").style.display = "none";
+
+    document.getElementById("countdown").innerHTML = "";
+    startTimer();
+
+}
+
+loadQuestion();
+
+document.getElementById("nextBtn").onclick = function(){
+
+    currentQuestion++;
+
+    if(currentQuestion >= interviewQuestions.length){
+
+        alert("🎉 Interview Completed!");
+
+        return;
+
+    }
+
+    loadQuestion();
+
+}
+
+</script>
+
+</body>
+</html>
