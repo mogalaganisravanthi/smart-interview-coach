@@ -1,6 +1,6 @@
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
+
+}
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
 
@@ -12,44 +12,46 @@ const transcript = document.getElementById("transcript");
 
 let finalText = "";
 
-recognition.onresult = function(event){
+recognition.onstart = function () {
+    transcript.innerHTML = "🎤 Listening...";
+};
 
-let interim = "";
+recognition.onresult = function (event) {
 
-for(let i=event.resultIndex;i<event.results.length;i++){
+    let interimText = "";
 
-let text = event.results[i][0].transcript;
+    for (let i = event.resultIndex; i < event.results.length; i++) {
 
-if(event.results[i].isFinal){
+        let text = event.results[i][0].transcript;
 
-finalText += text + " ";
+        if (event.results[i].isFinal) {
+            finalText += text + " ";
+        } else {
+            interimText += text;
+        }
+    }
 
-}else{
+    transcript.innerHTML = finalText + interimText;
+};
 
-interim += text;
+recognition.onerror = function (event) {
+    alert("Microphone Error: " + event.error);
+};
 
-}
+document.getElementById("startBtn").onclick = function () {
 
-}
+    finalText = "";
+    transcript.innerHTML = "";
 
-transcript.innerHTML =
-finalText +
-"<span style='color:gray'>"+interim+"</span>";
+    recognition.start();
+};
 
-}
+document.getElementById("stopBtn").onclick = function () {
 
-document.getElementById("startBtn").onclick=function(){
+    recognition.stop();
 
-finalText="";
+    setTimeout(function () {
+        transcript.innerHTML = finalText;
+    }, 500);
 
-transcript.innerHTML="";
-
-recognition.start();
-
-}
-
-document.getElementById("stopBtn").onclick=function(){
-
-recognition.stop();
-
-}
+};
