@@ -1,62 +1,62 @@
 const interviewQuestions = [
 
 {
-question:"Tell me about yourself.",
+    question: "Tell me about yourself.",
 
-points:[
-"Name",
-"Education",
-"Department",
-"Skills",
-"Project",
-"Career Goal"
-]
+    points: [
+        "Your Name",
+        "Education",
+        "Department",
+        "Technical Skills",
+        "One Project",
+        "Career Goal"
+    ]
 },
 
 {
-question:"Why should we hire you?",
+    question: "Why should we hire you?",
 
-points:[
-"Skills",
-"Strengths",
-"Teamwork",
-"Problem Solving",
-"Confidence"
-]
+    points: [
+        "Strengths",
+        "Technical Skills",
+        "Problem Solving",
+        "Teamwork",
+        "Confidence"
+    ]
 },
 
 {
-question:"What are your strengths?",
+    question: "Describe your final year/project.",
 
-points:[
-"Technical Skills",
-"Communication",
-"Leadership",
-"Learning Ability"
-]
+    points: [
+        "Project Name",
+        "Objective",
+        "Technologies Used",
+        "Your Contribution",
+        "Outcome"
+    ]
 },
 
 {
-question:"Describe one project you have completed.",
+    question: "What are your strengths?",
 
-points:[
-"Project Name",
-"Objective",
-"Technology",
-"Your Role",
-"Outcome"
-]
+    points: [
+        "Technical Skills",
+        "Communication",
+        "Leadership",
+        "Adaptability"
+    ]
 },
 
 {
-question:"Where do you see yourself in 5 years?",
+    question: "Where do you see yourself in five years?",
 
-points:[
-"Career Goal",
-"Learning",
-"Growth",
-"Contribution"
-]
+    points: [
+        "Career Goal",
+        "Learning",
+        "Growth",
+        "Contribution"
+    ]
 }
 
 ];
