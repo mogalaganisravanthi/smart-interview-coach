@@ -6,8 +6,8 @@ font-family:'Poppins',sans-serif;
 }
 body{
     margin:0;
-    font-family:'Poppins',sans-serif;
     background:linear-gradient(135deg,#ffd6e8,#ffc0cb,#ffe6f0);
+    font-family:'Poppins',sans-serif;
 }
 
 .container{
