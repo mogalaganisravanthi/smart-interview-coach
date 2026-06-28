@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Final Interview Report</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="profile-card">
+
+<h1>🎉 Interview Completed</h1>
+
+<h2 id="studentName"></h2>
+
+<br>
+
+<p><strong>Total Questions :</strong> <span id="total"></span></p>
+
+<p><strong>Average Score :</strong> <span id="average"></span></p>
+
+<p><strong>Performance :</strong> <span id="performance"></span></p>
+
+<h2 style="margin-top:30px;color:#ff2f92;">
+🏆 Great Job!
+</h2>
+
+<button onclick="location.href='dashboard.html'">
+
+🏠 Back To Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+const username=localStorage.getItem("username");
+
+document.getElementById("studentName").innerHTML=
+username;
+
+const scores=JSON.parse(localStorage.getItem("scores")) || [];
+
+document.getElementById("total").innerHTML=scores.length;
+
+let sum=0;
+
+scores.forEach(score=>{
+
+sum+=score;
+
+});
+
+let average=0;
+
+if(scores.length>0){
+
+average=Math.round(sum/scores.length);
+
+}
+
+document.getElementById("average").innerHTML=
+average+"/100";
+
+let performance="";
+
+if(average>=90){
+
+performance="🌟 Excellent";
+
+}
+
+else if(average>=75){
+
+performance="👍 Very Good";
+
+}
+
+else if(average>=60){
+
+performance="🙂 Good";
+
+}
+
+else{
+
+performance="📚 Needs Improvement";
+
+}
+
+document.getElementById("performance").innerHTML=
+performance;
+
+localStorage.removeItem("scores");
+
+</script>
+
+</body>
+
+</html>

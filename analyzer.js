@@ -58,6 +58,8 @@ function analyzeAnswer() {
     document.getElementById("overallScore").innerHTML =
         overall + "/100";
 
+    // Suggestions
+
     let suggestion = "";
 
     if (overall >= 90) {
@@ -65,16 +67,12 @@ function analyzeAnswer() {
         suggestion =
         "🌟 Excellent answer! You covered almost every important point and communicated confidently.";
 
-    }
-
-    else if (overall >= 70) {
+    } else if (overall >= 70) {
 
         suggestion =
         "👍 Good answer. Try adding a few more details and examples.";
 
-    }
-
-    else {
+    } else {
 
         suggestion =
         "📚 You need to cover more important points. Speak with more confidence and elaborate your answer.";
@@ -83,87 +81,104 @@ function analyzeAnswer() {
 
     document.getElementById("suggestions").innerHTML = suggestion;
 
-}
-// ---------- Grammar Feedback ----------
 
-let grammar = [];
+    // Grammar Feedback
 
-if(!answer.includes(".")){
-    grammar.push("• Use full sentences with proper punctuation.");
-}
+    let grammar = [];
 
-if(answer.split(" ").length < 15){
-    grammar.push("• Your answer is too short.");
-}
+    if (!answer.includes(".")) {
+        grammar.push("• Use full sentences with proper punctuation.");
+    }
 
-if(answer.includes("i am")===false && answer.includes("i'm")===false){
-    grammar.push("• Introduce yourself using 'I am...' or 'I'm...'.");
-}
+    if (answer.split(" ").length < 15) {
+        grammar.push("• Your answer is too short.");
+    }
 
-if(grammar.length===0){
-    grammar.push("✅ No obvious grammar issues found.");
-}
+    if (!answer.includes("i am") && !answer.includes("i'm")) {
+        grammar.push("• Introduce yourself using 'I am...' or 'I'm...'.");
+    }
 
-document.getElementById("grammar").innerHTML =
-grammar.join("<br>");
+    if (grammar.length === 0) {
+        grammar.push("✅ No obvious grammar issues found.");
+    }
+
+    document.getElementById("grammar").innerHTML =
+        grammar.join("<br>");
 
 
-// ---------- Filler Words ----------
+    // Filler Words
 
-const fillerWords=[
-"um",
-"uh",
-"like",
-"you know",
-"actually",
-"basically"
-];
+    const fillerWords = [
+        "um",
+        "uh",
+        "like",
+        "you know",
+        "actually",
+        "basically"
+    ];
 
-let used=[];
+    let used = [];
 
-fillerWords.forEach(word=>{
+    fillerWords.forEach(word => {
 
-if(answer.includes(word)){
+        if (answer.includes(word)) {
 
-used.push(word);
+            used.push(word);
 
-}
+        }
 
-});
+    });
 
-if(used.length===0){
+    if (used.length === 0) {
 
-document.getElementById("fillers").innerHTML=
-"✅ Great! No filler words detected.";
+        document.getElementById("fillers").innerHTML =
+        "✅ Great! No filler words detected.";
 
-}
+    } else {
 
-else{
-
-document.getElementById("fillers").innerHTML=
-"❌ Filler words detected: "+used.join(", ");
-
-}
-// -------- Automatic Next Question --------
-
-let seconds = 5;
-
-document.getElementById("countdown").innerHTML =
-"Next question in " + seconds + " seconds...";
-
-const timer = setInterval(function(){
-
-    seconds--;
-
-    document.getElementById("countdown").innerHTML =
-    "Next question in " + seconds + " seconds...";
-
-    if(seconds<=0){
-
-        clearInterval(timer);
-
-        document.getElementById("nextBtn").click();
+        document.getElementById("fillers").innerHTML =
+        "❌ Filler words detected: " + used.join(", ");
 
     }
 
-},1000);
+
+    // Save score
+
+    if (!localStorage.getItem("scores")) {
+
+        localStorage.setItem("scores", JSON.stringify([]));
+
+    }
+
+    let scores = JSON.parse(localStorage.getItem("scores"));
+
+    scores.push(overall);
+
+    localStorage.setItem("scores", JSON.stringify(scores));
+
+
+    // Countdown
+
+    let seconds = 5;
+
+    document.getElementById("countdown").innerHTML =
+    "➡ Next question in " + seconds + " seconds...";
+
+    const timer = setInterval(function () {
+
+        seconds--;
+
+        document.getElementById("countdown").innerHTML =
+        "➡ Next question in " + seconds + " seconds...";
+
+        if (seconds <= 0) {
+
+            clearInterval(timer);
+
+            document.getElementById("nextBtn").click();
+
+        }
+
+    }, 1000);
+
+}
