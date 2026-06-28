@@ -7,39 +7,41 @@ document.getElementById("analyzeBtn").onclick = function () {
         .innerText
         .toLowerCase();
 
-    const expected =
-        interviewQuestions[currentQuestion].points;
+    const expected = interviewQuestions[currentQuestion].points;
 
     let covered = 0;
 
     let report = "📊 AI Interview Analysis\n\n";
 
+    const keywordMap = {
+        "name": ["name", "i am", "my name", "called"],
+        "education": ["b.tech", "btech", "degree", "studied", "graduation", "college"],
+        "skills": ["python", "java", "c++", "html", "css", "javascript", "skills", "know"],
+        "project": ["project", "built", "developed", "application", "app"],
+        "career goal": ["goal", "become", "future", "aim", "aspire", "work as"],
+        "department": ["ai", "artificial intelligence", "ml", "machine learning", "cs", "cse", "it"]
+    };
+
     expected.forEach(point => {
 
-        if(answer.includes(point.toLowerCase())){
+        const key = point.toLowerCase();
 
+        let keywords = keywordMap[key] || [key];
+
+        let found = keywords.some(k => answer.includes(k));
+
+        if (found) {
             report += "✅ " + point + "\n";
-
             covered++;
-
-        }
-
-        else{
-
+        } else {
             report += "❌ " + point + "\n";
-
         }
-
     });
 
     const score =
-    Math.round((covered/expected.length)*100);
+        Math.round((covered / expected.length) * 100);
 
-    report +=
-    "\nCoverage Score : " +
-    score +
-    "%";
+    report += "\n📈 Coverage Score: " + score + "%";
 
     alert(report);
-
-}
+};
